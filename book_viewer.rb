@@ -1,5 +1,5 @@
 require "sinatra"
-require "sinatra/reloader"
+require "sinatra/reloader" if development?
 require "tilt/erubis"
 
 before do
@@ -76,13 +76,3 @@ def chapters_matching(query)
 
   results
 end
-
-# def search_chapters(query)
-#   matches = {}
-#   return matches if query.empty?
-#   (1..@contents.size).each do |index|
-#     chapter = File.read("data/chp#{index}.txt")
-#     matches[index] = @contents[index - 1] if chapter.downcase.match?(query.downcase)
-#   end
-#   matches
-# end
